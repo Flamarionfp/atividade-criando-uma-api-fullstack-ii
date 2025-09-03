@@ -12,7 +12,7 @@ export class UpdateUserService {
       throw new NotFoundException("Usuário não encontrado");
     }
 
-    if (dto.email && dto.name !== existingUser.email) {
+    if (dto.email && dto.email !== existingUser.email) {
       const userWithNewEmail = await this.userRepository.findByEmail(dto.email);
 
       if (userWithNewEmail) {
