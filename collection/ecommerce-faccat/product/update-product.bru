@@ -1,0 +1,22 @@
+meta {
+  name: update-product
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:4444/product/4
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Coca cola Zero",
+    "price": 20
+  }
+}
+
+settings {
+  encodeUrl: true
+}

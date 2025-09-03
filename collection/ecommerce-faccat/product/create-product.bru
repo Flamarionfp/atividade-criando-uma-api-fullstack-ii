@@ -1,0 +1,23 @@
+meta {
+  name: create-product
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:4444/product
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Coca Cola",
+    "price": 20,
+    "quantity": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+}
