@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   makeCreateProductController,
   makeDeleteProductController,
+  makeGetProductController,
   makeListProductsController,
   makeUpdateProductController,
 } from "../controllers/product";
@@ -14,6 +15,10 @@ makeCreateProductController().then((controller) => {
 
 makeListProductsController().then((controller) => {
   productRouter.get("/", controller.handle);
+});
+
+makeGetProductController().then((controller) => {
+  productRouter.get("/:id", controller.handle);
 });
 
 makeUpdateProductController().then((controller) => {
