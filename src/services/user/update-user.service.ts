@@ -1,11 +1,24 @@
 import { NotFoundException } from "../../core/error/exceptions/not-found.exception";
-import { UpdateUserDTO } from "../../dtos/user.dto";
+import { UnauthorizedException } from "../../core/error/exceptions/unauthorized.exception";
+import { AuthenticatedUserDTO, UpdateUserDTO } from "../../dtos/user.dto";
 import { UserRepository } from "../../repository/user.repository";
 
 export class UpdateUserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  execute = async (id: number, dto: UpdateUserDTO) => {
+  execute = async (
+    id: number,
+    dto: UpdateUserDTO,
+    authenticatedUser: AuthenticatedUserDTO
+  ) => {
+    const { requesterId } = authenticatedUser;
+
+    if (id !== requesterId) {
+      throw new UnauthorizedException(
+        "Você não tem permissão para atualizar esse usuário"
+      );
+    }
+
     const existingUser = await this.userRepository.findById(id);
 
     if (!existingUser) {

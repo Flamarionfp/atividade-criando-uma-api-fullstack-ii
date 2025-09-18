@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { CreateProductService } from "../../../services/product";
 import { HttpStatus } from "../../../core/http/http-status.enum";
-import { createProductBodySchema } from "../../../helpers/schemas/product.schema";
 import { CreateUserService } from "../../../services/user";
 import { createUserBodySchema } from "../../../helpers/schemas/user.schema";
 

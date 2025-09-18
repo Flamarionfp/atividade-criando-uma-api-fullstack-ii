@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpStatus } from "../core/http/http-status.enum";
+import { HttpStatus } from "../../core/http/http-status.enum";
 import { ZodError } from "zod";
 
 export class ExceptionHandlerMiddleware {
@@ -8,6 +8,8 @@ export class ExceptionHandlerMiddleware {
       BadRequestException: HttpStatus.BAD_REQUEST,
       NotFoundException: HttpStatus.NOT_FOUND,
       InternalServerException: HttpStatus.INTERNAL_SERVER_ERROR,
+      UnauthorizedException: HttpStatus.UNAUTHORIZED,
+      ForbiddenException: HttpStatus.FORBIDDEN,
     };
 
     const status = statusMap[error?.name] || HttpStatus.INTERNAL_SERVER_ERROR;
@@ -18,7 +20,7 @@ export class ExceptionHandlerMiddleware {
     };
   };
 
-  handle = (error: Error, req: Request, res: Response, next: NextFunction) => {
+  handle = (error: Error, _: Request, res: Response, next: NextFunction) => {
     if (res.headersSent) {
       next(error);
 

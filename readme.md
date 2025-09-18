@@ -24,6 +24,12 @@ Executar o servidor de desenvolvimento
 npm run dev
 ```
 
+Subir a carga de dados iniciais
+
+```bash
+npm run seed
+```
+
 Executar o código de produção
 
 ```bash

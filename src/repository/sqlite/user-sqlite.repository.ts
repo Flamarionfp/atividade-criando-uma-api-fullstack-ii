@@ -5,6 +5,7 @@ import {
   CreateUserDTO,
   PresentationUserDTO,
   UpdateUserDTO,
+  UserDTO,
 } from "../../dtos/user.dto";
 
 export class UserSqliteRepository implements UserRepository {
@@ -23,7 +24,7 @@ export class UserSqliteRepository implements UserRepository {
     return row;
   };
 
-  findById = async (id: number) => {
+  findById = async (id: number): Promise<UserDTO> => {
     const row = await this.connection.get(
       `SELECT * FROM users WHERE id = ?`,
       id
@@ -69,7 +70,9 @@ export class UserSqliteRepository implements UserRepository {
 
     const updatedUser = await this.findById(id);
 
-    return updatedUser!;
+    const { password, ...rest } = updatedUser;
+
+    return rest!;
   };
 
   delete = async (id: number) => {

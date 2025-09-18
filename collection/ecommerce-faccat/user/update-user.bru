@@ -7,15 +7,19 @@ meta {
 put {
   url: http://localhost:4444/user/2
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0xOCAyMzozOToyNSIsImlhdCI6MTc1ODIzODc3NCwiZXhwIjoxNzU4MjQyMzc0fQ.BabtR0RwiGipP19bBxLx9ulQ_tv4FQa_YlvxT3MxQRk
 }
 
 body:json {
   {
-    "name": "Flamarion Fagundes Pinto",
-    "email": "flamarionpinto@sou.faccat.br",
-    "password": "123456",
-    "role": "admin"
+    "name": "Cristiano Ronaldo",
+    "email": "cris@sou.faccat.br",
+    "password": "!321312op3i21o",
+    "role": "customer"
   }
 }
 

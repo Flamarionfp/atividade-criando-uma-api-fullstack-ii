@@ -6,27 +6,43 @@ import {
   makeListProductsController,
   makeUpdateProductController,
 } from "../controllers/product";
+import { checkRoleMiddleware } from "../middlewares/check-role-middleware";
+import { makeAuthMiddleware } from "../middlewares/auth-middleware";
 
 const productRouter = Router();
 
-makeCreateProductController().then((controller) => {
-  productRouter.post("/", controller.handle);
-});
+const configureProductRoutes = async () => {
+  const authMiddleware = await makeAuthMiddleware();
+  productRouter.use(authMiddleware.handle);
 
-makeListProductsController().then((controller) => {
-  productRouter.get("/", controller.handle);
-});
+  const createProductController = await makeCreateProductController();
+  productRouter.post(
+    "/",
+    checkRoleMiddleware.admin,
+    createProductController.handle
+  );
 
-makeGetProductController().then((controller) => {
-  productRouter.get("/:id", controller.handle);
-});
+  const listProductsController = await makeListProductsController();
+  productRouter.get("/", listProductsController.handle);
 
-makeUpdateProductController().then((controller) => {
-  productRouter.put("/:id", controller.handle);
-});
+  const getProductController = await makeGetProductController();
+  productRouter.get("/:id", getProductController.handle);
 
-makeDeleteProductController().then((controller) => {
-  productRouter.delete("/:id", controller.handle);
-});
+  const updateProductController = await makeUpdateProductController();
+  productRouter.put(
+    "/:id",
+    checkRoleMiddleware.admin,
+    updateProductController.handle
+  );
+
+  const deleteProductController = await makeDeleteProductController();
+  productRouter.delete(
+    "/:id",
+    checkRoleMiddleware.admin,
+    deleteProductController.handle
+  );
+};
+
+configureProductRoutes();
 
 export default productRouter;

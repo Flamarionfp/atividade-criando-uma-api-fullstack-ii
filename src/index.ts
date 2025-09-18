@@ -1,17 +1,20 @@
 import "dotenv/config";
 import express, { Response } from "express";
-import { ExceptionHandlerMiddleware } from "./middlewares/exception-handler.middleware";
+import { ExceptionHandlerMiddleware } from "./middlewares/exception-handler-middleware/exception-handler.middleware";
 import productRouter from "./routes/product.routes";
 import * as z from "zod";
 import userRouter from "./routes/user.routes";
+import authRouter from "./routes/auth.routes";
+import { exceptionHandlerMiddleware } from "./middlewares/exception-handler-middleware";
 
 z.config(z.locales.pt());
 
 const app = express();
 app.use(express.json());
-app.use("/product", productRouter);
+app.use("/auth", authRouter);
 app.use("/user", userRouter);
-app.use(new ExceptionHandlerMiddleware().handle);
+app.use("/product", productRouter);
+app.use(exceptionHandlerMiddleware.handle);
 
 const port = process.env.PORT || 4444;
 

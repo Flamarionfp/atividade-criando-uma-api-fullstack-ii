@@ -3,7 +3,7 @@ import { CreateUserService, UpdateUserService } from "../../../services/user";
 
 import { UpdateUserController } from "./update-user.controller";
 
-export const makeUpdateserController =
+export const makeUpdateUserController =
   async (): Promise<UpdateUserController> => {
     const userRepository = new UserSqliteRepository();
     await userRepository.init();

@@ -7,7 +7,15 @@ meta {
 get {
   url: http://localhost:4444/user
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+headers {
+  : 
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0xOCAyMzozNjowOSIsImlhdCI6MTc1ODIzODY3NiwiZXhwIjoxNzU4MjQyMjc2fQ.-NjP_d9y5RZ0s7CJ_iHYs8RT1g-tBSAcN7nHvx_t9gY
 }
 
 settings {

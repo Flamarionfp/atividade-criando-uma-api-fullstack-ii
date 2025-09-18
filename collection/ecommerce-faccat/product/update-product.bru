@@ -7,7 +7,11 @@ meta {
 put {
   url: http://localhost:4444/product/4
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkZsYW1hcmlvbiBGYWd1bmRlcyBQaW50byIsImVtYWlsIjoiZmxhbWFyaW9ucGludG9Ac291LmZhY2NhdC5iciIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRfYXQiOiIyMDI1LTA5LTExIDAwOjE4OjU0IiwiaWF0IjoxNzU3NTUyOTYzLCJleHAiOjE3NTc1NTY1NjN9.Qed-UQRi9eiq6gE7D0PhygrzlNgEEWr3tVL_RvJ76rg
 }
 
 body:json {

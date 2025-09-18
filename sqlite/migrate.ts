@@ -1,14 +1,9 @@
-import "dotenv/config";
 import { readdir } from "fs/promises";
 import path from "path";
-import { open } from "sqlite";
-import sqlite3 from "sqlite3";
+import { connectDB } from "./connect";
 
 async function runMigrations() {
-  const db = await open({
-    filename: `${process.env.DATABASE_PATH}`,
-    driver: sqlite3.Database,
-  });
+  const db = await connectDB();
 
   await db.exec(`
     CREATE TABLE IF NOT EXISTS migrations (

@@ -1,0 +1,36 @@
+meta {
+  name: login-customer
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:4444/auth
+  body: json
+  auth: apikey
+}
+
+params:query {
+  ~apiKey: mLgOlX5k4ZIPdyo11SbtTMZUcxF78je1DDaHW64neQqUkcgxYJBaBr3AcJ48lvLAD6UaKYLuKQB2BYBDNgc3zT5UhGHXlQ3vzAtNUnmQgaP1XD8JV1m30giaF8IMhek0
+}
+
+headers {
+  : 
+}
+
+auth:apikey {
+  key: api-key
+  value: mLgOlX5k4ZIPdyo11SbtTMZUcxF78je1DDaHW64neQqUkcgxYJBaBr3AcJ48lvLAD6UaKYLuKQB2BYBDNgc3zT5UhGHXlQ3vzAtNUnmQgaP1XD8JV1m30giaF8IMhek0
+  placement: header
+}
+
+body:json {
+  {
+    "email": "cris@sou.faccat.br",
+    "password": "123456"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

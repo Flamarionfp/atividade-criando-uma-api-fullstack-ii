@@ -1,0 +1,19 @@
+meta {
+  name: get-user
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:4444/user/2
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0xOCAyMzozOToyNSIsImlhdCI6MTc1ODIzODc3NCwiZXhwIjoxNzU4MjQyMzc0fQ.BabtR0RwiGipP19bBxLx9ulQ_tv4FQa_YlvxT3MxQRk
+}
+
+settings {
+  encodeUrl: true
+}
