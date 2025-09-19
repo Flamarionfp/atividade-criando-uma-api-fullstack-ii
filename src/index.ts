@@ -6,11 +6,13 @@ import * as z from "zod";
 import userRouter from "./routes/user.routes";
 import authRouter from "./routes/auth.routes";
 import { exceptionHandlerMiddleware } from "./middlewares/exception-handler-middleware";
+import { healthCheckController } from "./controllers/health-check";
 
 z.config(z.locales.pt());
 
 const app = express();
 app.use(express.json());
+app.use("/health-check", healthCheckController.handle);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
