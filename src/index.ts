@@ -7,10 +7,13 @@ import userRouter from "./routes/user.routes";
 import authRouter from "./routes/auth.routes";
 import { exceptionHandlerMiddleware } from "./middlewares/exception-handler-middleware";
 import { healthCheckController } from "./controllers/health-check";
+import cors from 'cors'
 
 z.config(z.locales.pt());
 
 const app = express();
+
+app.use(cors({origin: '*'}))
 app.use(express.json());
 
 app.use(morgan("dev"));
