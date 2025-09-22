@@ -110,8 +110,13 @@ export class ProductSqliteRepository implements ProductRepository {
       product.quantity
     );
 
+    const id =
+      typeof result.lastID === "bigint"
+        ? result.lastID.toString()
+        : result.lastID;
+
     return {
-      id: result.lastID!,
+      id,
       name: product.name,
       price: product.price,
       quantity: product.quantity,

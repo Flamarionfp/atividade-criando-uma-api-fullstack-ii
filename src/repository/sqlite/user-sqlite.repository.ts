@@ -87,8 +87,13 @@ export class UserSqliteRepository implements UserRepository {
       user.role
     );
 
+    const id =
+      typeof result.lastID === "bigint"
+        ? result.lastID.toString()
+        : result.lastID;
+
     return {
-      id: result.lastID!,
+      id,
       name: user.name,
       email: user.email,
       role: user.role,
