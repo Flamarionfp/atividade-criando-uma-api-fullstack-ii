@@ -1,8 +1,9 @@
 ## Desenvolvimento Full Stack II
 
-Atividade G1 - Criando uma API
+Carango Show API
 
-Nome: Flamarion Fagundes Pinto
+Nome: Allan K. Scain, Flamarion Fagundes,
+Luan Sananda e Manuela Kleinkauf
 
 ### Como executar o projeto?
 

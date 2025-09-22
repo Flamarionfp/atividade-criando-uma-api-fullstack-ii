@@ -12,11 +12,14 @@ z.config(z.locales.pt());
 
 const app = express();
 app.use(express.json());
+
 app.use(morgan("dev"));
+
 app.use("/health-check", healthCheckController.handle);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
+
 app.use(exceptionHandlerMiddleware.handle);
 
 const port = process.env.PORT || 4444;
