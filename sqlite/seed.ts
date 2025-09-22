@@ -1,16 +1,15 @@
 import "dotenv/config";
-import { Database, open } from "sqlite";
-import sqlite3 from "sqlite3";
-import { connectDB } from "./connect";
-import { createUserAdmin } from "./seeds/admin";
 
-export async function execute(db: Database) {
+import { createUserAdmin } from "./seeds/admin";
+import { connectDatabase, DatabaseConnection } from "../src/config/database";
+
+export async function execute(db: DatabaseConnection) {
   await createUserAdmin(db);
 }
 
 (async () => {
   try {
-    const db = await connectDB();
+    const db = await connectDatabase();
 
     await execute(db);
 

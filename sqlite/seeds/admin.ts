@@ -1,7 +1,8 @@
 import { Database } from "sqlite";
 import bycript from "bcrypt";
+import { DatabaseConnection } from "../../src/config/database";
 
-export async function createUserAdmin(db: Database) {
+export async function createUserAdmin(db: DatabaseConnection) {
   const password = "admin1";
 
   const hashedPassword = await bycript.hash(password, 10);

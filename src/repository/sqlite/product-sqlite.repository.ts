@@ -1,5 +1,4 @@
-import { Database } from "sqlite";
-import { connectDatabase } from "../../config/database";
+import { connectDatabase, DatabaseConnection } from "../../config/database";
 import {
   CreateProductDTO,
   FilterProductsDTO,
@@ -9,7 +8,7 @@ import {
 import { ProductRepository } from "../product.repository";
 
 export class ProductSqliteRepository implements ProductRepository {
-  private connection!: Database;
+  private connection!: DatabaseConnection;
 
   async init(): Promise<void> {
     this.connection = await connectDatabase();

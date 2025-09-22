@@ -1,9 +1,11 @@
+import "dotenv/config";
+
 import { readdir } from "fs/promises";
 import path from "path";
-import { connectDB } from "./connect";
+import { connectDatabase } from "../src/config/database";
 
 async function runMigrations() {
-  const db = await connectDB();
+  const db = await connectDatabase();
 
   await db.exec(`
     CREATE TABLE IF NOT EXISTS migrations (

@@ -7,6 +7,8 @@ Luan Sananda e Manuela Kleinkauf
 
 ### Como executar o projeto?
 
+Criar um arquivo `.env` na raiz do projeto seguindo o `.env.example`.
+
 Instalar as dependências
 
 ```bash
@@ -39,4 +41,17 @@ npm run build
 &&
 
 npm start
+```
+
+OBS: Para executar algum comando em `Produção`, crie um arquivo `.env.prd` na raiz do projeto, adicione as credenciais de
+produção, incluindo `NODE_ENV="production"` e então execute:
+
+```bash
+dotenv -e .env.prd -- comando-aqui
+```
+
+Caso ainda não tenha o [dotenv-cli](https://www.npmjs.com/package/dotenv-cli), pode instalar com:
+
+```bash
+npm install -g dotenv-cli
 ```

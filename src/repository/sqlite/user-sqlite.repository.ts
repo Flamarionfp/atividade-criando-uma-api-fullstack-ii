@@ -1,5 +1,4 @@
-import { Database } from "sqlite";
-import { connectDatabase } from "../../config/database";
+import { connectDatabase, DatabaseConnection } from "../../config/database";
 import { UserRepository } from "../user.repository";
 import {
   CreateUserDTO,
@@ -9,7 +8,7 @@ import {
 } from "../../dtos/user.dto";
 
 export class UserSqliteRepository implements UserRepository {
-  private connection!: Database;
+  private connection!: DatabaseConnection;
 
   async init(): Promise<void> {
     this.connection = await connectDatabase();
