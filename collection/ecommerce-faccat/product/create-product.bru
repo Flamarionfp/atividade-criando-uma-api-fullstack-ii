@@ -5,19 +5,19 @@ meta {
 }
 
 post {
-  url: http://localhost:4444/product
+  url: {{BASE_URL}}/product
   body: json
   auth: bearer
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0xOCAwMDo1Mjo0MiIsImlhdCI6MTc1ODE1NzEwNCwiZXhwIjoxNzU4MTYwNzA0fQ.dHAL64i8c7wxdvQXOt1QFdUeH2Acga_A62bizKnbb88
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yMiAxNDoxNDoxNSIsImlhdCI6MTc1ODU1MzIxMCwiZXhwIjoxNzU4NTU2ODEwfQ.8hb9r2YAwpW49Wk9cwOnep9VSHOi64T0cpdm2YbuTTc
 }
 
 body:json {
   {
-    "name": "Coca Cola",
-    "price": 20,
+    "name": "Fusca",
+    "price": 100,
     "quantity": 1
   }
 }

@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: http://localhost:4444/user
+  url: {{BASE_URL}}/user
   body: json
   auth: apikey
 }
 
 auth:apikey {
   key: api-key
-  value: mLgOlX5k4ZIPdyo11SbtTMZUcxF78je1DDaHW64neQqUkcgxYJBaBr3AcJ48lvLAD6UaKYLuKQB2BYBDNgc3zT5UhGHXlQ3vzAtNUnmQgaP1XD8JV1m30giaF8IMhek0
+  value: {{API_KEY}}
   placement: header
 }
 

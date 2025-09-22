@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:4444/auth
+  url: {{BASE_URL}}/auth
   body: json
   auth: apikey
 }
@@ -20,7 +20,7 @@ headers {
 
 auth:apikey {
   key: api-key
-  value: mLgOlX5k4ZIPdyo11SbtTMZUcxF78je1DDaHW64neQqUkcgxYJBaBr3AcJ48lvLAD6UaKYLuKQB2BYBDNgc3zT5UhGHXlQ3vzAtNUnmQgaP1XD8JV1m30giaF8IMhek0
+  value: {{API_KEY}}
   placement: header
 }
 

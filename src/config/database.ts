@@ -19,7 +19,12 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
 
     return {
       async run(sql, ...params) {
-        await client.execute({ sql, args: params });
+        const result = await client.execute({ sql, args: params });
+
+        return {
+          lastID: result.lastInsertRowid,
+          changes: result.rowsAffected,
+        };
       },
       async get(sql, ...params) {
         const result = await client.execute({ sql, args: params });
