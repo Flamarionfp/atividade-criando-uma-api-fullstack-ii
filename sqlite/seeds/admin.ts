@@ -1,4 +1,3 @@
-import { Database } from "sqlite";
 import bycript from "bcrypt";
 import { DatabaseConnection } from "../../src/config/database";
 

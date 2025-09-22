@@ -2,9 +2,11 @@ import "dotenv/config";
 
 import { createUserAdmin } from "./seeds/admin";
 import { connectDatabase, DatabaseConnection } from "../src/config/database";
+import { createProducts } from "./seeds/product";
 
 export async function execute(db: DatabaseConnection) {
   await createUserAdmin(db);
+  await createProducts(db);
 }
 
 (async () => {
