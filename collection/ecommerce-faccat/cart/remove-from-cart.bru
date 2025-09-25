@@ -1,23 +1,17 @@
 meta {
-  name: add-to-cart
+  name: remove-from-cart
   type: http
-  seq: 1
+  seq: 3
 }
 
-post {
-  url: {{BASE_URL}}/cart/add
-  body: json
+delete {
+  url: {{BASE_URL}}/cart/remove/9
+  body: none
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yNSAyMjo1NzozNiIsImlhdCI6MTc1ODg0MTA2MCwiZXhwIjoxNzU4ODQ0NjYwfQ.X4pAH7TR-eEOPy63ITmjPaM5LF5iXZB6S84Icp7rpfI
-}
-
-body:json {
-  {
-    "productId": 2
-  }
 }
 
 settings {

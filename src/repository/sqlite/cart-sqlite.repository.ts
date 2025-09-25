@@ -9,17 +9,43 @@ export class CartSqliteRepository implements CartRepository {
     this.connection = await connectDatabase();
   }
 
-  add = async (productId: number, userId: number) => {
-    await this.connection.run(
-      `INSERT INTO cart (product_id, user_id) VALUES (?, ?)`,
-      productId,
-      userId
-    );
+  find = async (id: number) => {
+    const query = `
+      ${this.getCartQueryBuilder()}
+      WHERE
+         c.id = ?`;
+
+    const row = await this.connection.get<CartDTO>(query, id);
+
+    return row;
   };
 
   findByUserId = async (userId: number) => {
     const query = `
-      SELECT
+      ${this.getCartQueryBuilder()}
+      WHERE
+        c.user_id = ?
+    `;
+
+    const rows = await this.connection.all<CartDTO[]>(query, userId);
+
+    return rows;
+  };
+
+  findItemByProductAndUser = async (productId: number, userId: number) => {
+    const query = `
+      ${this.getCartQueryBuilder()}
+      WHERE
+        c.product_id = ? AND c.user_id = ?
+    `;
+
+    const rows = await this.connection.all<CartDTO[]>(query, productId, userId);
+
+    return rows;
+  };
+
+  private getCartQueryBuilder() {
+    return `SELECT
         c.id AS cartId,
         c.product_id AS productId,
         c.user_id AS userId,
@@ -29,12 +55,26 @@ export class CartSqliteRepository implements CartRepository {
         cart c
       JOIN
         products p ON c.product_id = p.id
-      WHERE
-        c.user_id = ?
     `;
+  }
 
-    const rows = await this.connection.all<CartDTO[]>(query, userId);
+  add = async (productId: number, userId: number) => {
+    await this.connection.run(
+      `INSERT INTO cart (product_id, user_id) VALUES (?, ?)`,
+      productId,
+      userId
+    );
+  };
 
-    return rows;
+  remove = async (id: number, userId: number) => {
+    await this.connection.run(
+      `DELETE FROM cart WHERE id = ? AND user_id = ?`,
+      id,
+      userId
+    );
+  };
+
+  clear = async (userId: number) => {
+    await this.connection.run(`DELETE FROM cart WHERE user_id = ?`, userId);
   };
 }
