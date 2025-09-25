@@ -10,9 +10,9 @@ export class ListCartController {
     try {
       const { requesterId } = userRequestSchema.parse(req.user);
 
-      const cart = await this.listCartService.execute(requesterId);
+      const result = await this.listCartService.execute(requesterId);
 
-      return res.status(HttpStatus.OK).send(cart);
+      return res.status(HttpStatus.OK).send(result);
     } catch (error) {
       next(error);
     }

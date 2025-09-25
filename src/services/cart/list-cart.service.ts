@@ -6,6 +6,13 @@ export class ListCartService {
   execute = async (userId: number) => {
     const cart = await this.cartRepository.findByUserId(userId);
 
-    return cart;
+    const total = cart.reduce((acc, item) => {
+      return acc + item.productPrice;
+    }, 0);
+
+    return {
+      items: cart,
+      total,
+    };
   };
 }

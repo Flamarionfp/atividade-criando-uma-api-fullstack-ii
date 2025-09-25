@@ -2,6 +2,6 @@ export interface CartDTO {
   id: number;
   userId: number;
   productId: number;
-  name: string;
-  price: number;
+  productName: string;
+  productPrice: number;
 }
