@@ -4,3 +4,4 @@
 [V] -> Autorização
 [] -> Carrinho
 [] -> Pedido
+[] -> Paginação (Produtos)

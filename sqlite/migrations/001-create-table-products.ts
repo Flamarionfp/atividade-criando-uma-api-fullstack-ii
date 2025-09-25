@@ -4,7 +4,6 @@ export async function up(db: import("sqlite").Database) {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL UNIQUE,
       price REAL NOT NULL,
-      quantity INTEGER NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);

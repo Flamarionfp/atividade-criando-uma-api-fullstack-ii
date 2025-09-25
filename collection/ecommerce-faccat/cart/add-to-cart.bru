@@ -1,22 +1,23 @@
 meta {
-  name: list-products
+  name: add-to-cart
   type: http
-  seq: 3
+  seq: 1
 }
 
-get {
-  url: {{BASE_URL}}/product
-  body: none
+post {
+  url: {{BASE_URL}}/cart
+  body: json
   auth: bearer
-}
-
-params:query {
-  ~name: BMW
-  ~price: 999
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yNSAwMToxODoxOCIsImlhdCI6MTc1ODc2MzEwMywiZXhwIjoxNzU4NzY2NzAzfQ.Maayywqxirar6ALPOYIqAoLwwLMKOIPqIcz-MrkBEm0
+}
+
+body:json {
+  {
+    "productId": 1
+  }
 }
 
 settings {

@@ -46,11 +46,6 @@ export class ProductSqliteRepository implements ProductRepository {
       params.push(filters.price);
     }
 
-    if (filters?.quantity !== undefined) {
-      whereClauses.push("quantity = ?");
-      params.push(filters.quantity);
-    }
-
     const whereClause =
       whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
@@ -66,11 +61,7 @@ export class ProductSqliteRepository implements ProductRepository {
     const setClauses: string[] = [];
     const params: any[] = [];
 
-    const allowedFields: (keyof UpdateProductDTO)[] = [
-      "name",
-      "price",
-      "quantity",
-    ];
+    const allowedFields: (keyof UpdateProductDTO)[] = ["name", "price"];
 
     for (const [key, value] of Object.entries(product)) {
       if (
@@ -104,10 +95,9 @@ export class ProductSqliteRepository implements ProductRepository {
 
   create = async (product: CreateProductDTO) => {
     const result = await this.connection.run(
-      `INSERT INTO products (name, price, quantity) VALUES (?, ?, ?)`,
+      `INSERT INTO products (name, price) VALUES (?, ?, ?)`,
       product.name,
-      product.price,
-      product.quantity
+      product.price
     );
 
     const id =
@@ -119,7 +109,6 @@ export class ProductSqliteRepository implements ProductRepository {
       id,
       name: product.name,
       price: product.price,
-      quantity: product.quantity,
     };
   };
 }

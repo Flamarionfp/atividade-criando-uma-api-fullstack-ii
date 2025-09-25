@@ -1,5 +1,6 @@
 import * as z from "zod";
+import { idValidation } from "../validation/id";
 
 export const idSchema = z.object({
-  id: z.coerce.number().min(1),
+  id: idValidation,
 });
