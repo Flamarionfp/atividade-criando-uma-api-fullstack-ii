@@ -2,6 +2,7 @@
 [V] -> CRUD de produtos
 [V] -> Autenticação
 [V] -> Autorização
-[] -> Carrinho
+[V] -> Carrinho
 [] -> Pedido
 [] -> Paginação (Produtos)
+[V] -> Swagger
