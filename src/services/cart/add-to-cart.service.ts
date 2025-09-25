@@ -1,4 +1,3 @@
-import { BadRequestException } from "../../core/error/exceptions/bad-request.exception";
 import { NotFoundException } from "../../core/error/exceptions/not-found.exception";
 
 import { CartRepository } from "../../repository/cart.repository";

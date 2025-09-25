@@ -2,6 +2,7 @@ import { Router } from "express";
 import { makeCreateAddToCartController } from "../controllers/cart/add-to-cart-controller";
 import { makeAuthMiddleware } from "../middlewares/auth-middleware";
 import { checkRoleMiddleware } from "../middlewares/check-role-middleware";
+import { makeListCartController } from "../controllers/cart/list-cart-controller";
 
 const cartRouter = Router();
 
@@ -15,6 +16,15 @@ const configureCartRoutes = async () => {
     authMiddleware.handle,
     checkRoleMiddleware.customer,
     addToCartController.handle
+  );
+
+  const listCartController = await makeListCartController();
+
+  cartRouter.get(
+    "/",
+    authMiddleware.handle,
+    checkRoleMiddleware.customer,
+    listCartController.handle
   );
 };
 

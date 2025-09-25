@@ -1,0 +1,19 @@
+meta {
+  name: list-cart
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{BASE_URL}}/cart
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yNSAwMToxODoxOCIsImlhdCI6MTc1ODc2NDQwNywiZXhwIjoxNzU4NzY4MDA3fQ.b-5pjPyk5P0a5Td5YZ9-_q7S6lzp62VKLx_oQv4S1Ew
+}
+
+settings {
+  encodeUrl: true
+}
