@@ -1,4 +1,6 @@
+import { Role } from "../../@types/role";
 import { BadRequestException } from "../../core/error/exceptions/bad-request.exception";
+import { ForbiddenException } from "../../core/error/exceptions/forbidden.exception";
 import { CreateUserDTO } from "../../dtos/user.dto";
 
 import { UserRepository } from "../../repository/user.repository";
@@ -9,6 +11,12 @@ export class CreateUserService {
 
   execute = async (dto: CreateUserDTO) => {
     const existingUser = await this.userRepository.findByEmail(dto.email);
+
+    if (dto.role === Role.ADMIN) {
+      throw new ForbiddenException(
+        "Você não tem permissão para criar um admin"
+      );
+    }
 
     if (existingUser) {
       throw new BadRequestException("Usuário já existe");
