@@ -95,7 +95,7 @@ export class ProductSqliteRepository implements ProductRepository {
 
   create = async (product: CreateProductDTO) => {
     const result = await this.connection.run(
-      `INSERT INTO products (name, price) VALUES (?, ?, ?)`,
+      `INSERT INTO products (name, price) VALUES (?, ?)`,
       product.name,
       product.price
     );

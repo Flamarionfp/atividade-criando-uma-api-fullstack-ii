@@ -18,22 +18,28 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
     });
 
     return {
+      async all(sql, ...params) {
+        const flatParams = params.flat(); // garante que não vai virar array dentro de array
+        const result = await client.execute({ sql, args: flatParams });
+        return result.rows as any;
+      },
+
+      async get(sql, ...params) {
+        const flatParams = params.flat();
+        const result = await client.execute({ sql, args: flatParams });
+        return result.rows[0] as any;
+      },
+
       async run(sql, ...params) {
-        const result = await client.execute({ sql, args: params });
+        const flatParams = params.flat();
+        const result = await client.execute({ sql, args: flatParams });
 
         return {
           lastID: result.lastInsertRowid,
           changes: result.rowsAffected,
         };
       },
-      async get(sql, ...params) {
-        const result = await client.execute({ sql, args: params });
-        return result.rows[0] as any;
-      },
-      async all(sql, ...params) {
-        const result = await client.execute({ sql, args: params });
-        return result.rows as any;
-      },
+
       async exec(sql: string) {
         await client.execute(sql);
       },
