@@ -2,7 +2,7 @@ import { CartDTO } from "../dtos/cart.dto";
 
 export interface CartRepository {
   init(): Promise<void>;
-  find: (id: number) => Promise<CartDTO | undefined>;
+  findById: (id: number) => Promise<CartDTO | undefined>;
   findByUserId: (userId: number) => Promise<CartDTO[]>;
   findItemByProductAndUser: (
     productId: number,

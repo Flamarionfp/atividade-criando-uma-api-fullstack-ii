@@ -9,7 +9,7 @@ export class CartSqliteRepository implements CartRepository {
     this.connection = await connectDatabase();
   }
 
-  find = async (id: number) => {
+  findById = async (id: number) => {
     const query = `
       ${this.getCartQueryBuilder()}
       WHERE

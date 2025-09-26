@@ -20,7 +20,7 @@ const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(morgan("dev"));
 

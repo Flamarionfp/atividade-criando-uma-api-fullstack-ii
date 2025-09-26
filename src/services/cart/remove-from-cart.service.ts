@@ -6,7 +6,7 @@ export class RemoveFromCartService {
   constructor(private readonly cartRepository: CartRepository) {}
 
   execute = async (id: number, authenticatedUser: AuthenticatedUserDTO) => {
-    const cartItem = await this.cartRepository.find(id);
+    const cartItem = await this.cartRepository.findById(id);
 
     if (!cartItem) {
       throw new NotFoundException(
