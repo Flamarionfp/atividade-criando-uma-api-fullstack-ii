@@ -15,19 +15,33 @@ export class ProductSqliteRepository implements ProductRepository {
   }
 
   findByName = async (name: string) => {
-    const row = await this.connection.get<ProductDTO>(
+    const row = await this.connection.get<any>(
       `SELECT * FROM products WHERE name = ?`,
       name
     );
+
+    if (row) {
+      return {
+        ...row,
+        specifications: JSON.parse(row.specifications || "[]"),
+      } as ProductDTO;
+    }
 
     return row;
   };
 
   findById = async (id: number) => {
-    const row = await this.connection.get<ProductDTO>(
+    const row = await this.connection.get<any>(
       `SELECT * FROM products WHERE id = ?`,
       id
     );
+
+    if (row) {
+      return {
+        ...row,
+        specifications: JSON.parse(row.specifications || "[]"),
+      } as ProductDTO;
+    }
 
     return row;
   };
@@ -49,19 +63,30 @@ export class ProductSqliteRepository implements ProductRepository {
     const whereClause =
       whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
-    const rows = await this.connection.all<ProductDTO[]>(
+    const rows = await this.connection.all<any[]>(
       `SELECT * FROM products ${whereClause}`,
       params
     );
 
-    return rows;
+    return rows.map((row) => ({
+      ...row,
+      specifications: JSON.parse(row.specifications || "[]"),
+    })) as ProductDTO[];
   };
 
   update = async (id: number, product: UpdateProductDTO) => {
     const setClauses: string[] = [];
     const params: any[] = [];
 
-    const allowedFields: (keyof UpdateProductDTO)[] = ["name", "price"];
+    const allowedFields: (keyof UpdateProductDTO)[] = [
+      "name",
+      "price",
+      "trade",
+      "model",
+      "year",
+      "specifications",
+      "thumb",
+    ];
 
     for (const [key, value] of Object.entries(product)) {
       if (
@@ -69,7 +94,11 @@ export class ProductSqliteRepository implements ProductRepository {
         allowedFields.includes(key as keyof UpdateProductDTO)
       ) {
         setClauses.push(`${key} = ?`);
-        params.push(value);
+        if (key === "specifications") {
+          params.push(JSON.stringify(value));
+        } else {
+          params.push(value);
+        }
       }
     }
 
@@ -95,9 +124,14 @@ export class ProductSqliteRepository implements ProductRepository {
 
   create = async (product: CreateProductDTO) => {
     const result = await this.connection.run(
-      `INSERT INTO products (name, price) VALUES (?, ?)`,
+      `INSERT INTO products (name, price, trade, model, year, specifications, thumb) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       product.name,
-      product.price
+      product.price,
+      product.trade,
+      product.model,
+      product.year,
+      JSON.stringify(product.specifications),
+      product.thumb
     );
 
     const id =
@@ -109,6 +143,11 @@ export class ProductSqliteRepository implements ProductRepository {
       id,
       name: product.name,
       price: product.price,
+      trade: product.trade,
+      model: product.model,
+      year: product.year,
+      specifications: product.specifications,
+      thumb: product.thumb,
     };
   };
 }

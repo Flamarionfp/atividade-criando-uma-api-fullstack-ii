@@ -1,0 +1,27 @@
+meta {
+  name: example-product-response
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{BASE_URL}}/product/1
+  body: none
+  auth: inherit
+}
+
+# Exemplo de resposta esperada:
+# {
+#   "id": 1,
+#   "name": "Uno",
+#   "price": 120,
+#   "trade": "Fiat",
+#   "model": "Uno Mille",
+#   "year": "2015-01-01",
+#   "specifications": ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
+#   "thumb": "https://example.com/images/fiat_uno.jpg"
+# }
+
+settings {
+  encodeUrl: true
+}

@@ -4,6 +4,7 @@ export interface CartRepository {
   init(): Promise<void>;
   findById: (id: number) => Promise<CartDTO | undefined>;
   findByUserId: (userId: number) => Promise<CartDTO[]>;
+  findByUserIdForCheckout: (userId: number) => Promise<CartDTO[]>;
   findItemByProductAndUser: (
     productId: number,
     userId: number

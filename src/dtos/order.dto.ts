@@ -3,6 +3,11 @@ export interface OrderItemDTO {
   productId: number;
   productName: string;
   price: number;
+  productTrade: string;
+  productModel: string;
+  productYear: string;
+  productSpecifications: string[];
+  productThumb: string;
 }
 
 export interface OrderDTO {

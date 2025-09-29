@@ -10,7 +10,7 @@ export class CheckoutCartService {
   ) {}
 
   execute = async (requesterId: number) => {
-    const cart = await this.cartRepository.findByUserId(requesterId);
+    const cart = await this.cartRepository.findByUserIdForCheckout(requesterId);
 
     if (cart.length === 0) {
       throw new BadRequestException(
@@ -27,6 +27,11 @@ export class CheckoutCartService {
         productId: item.productId,
         price: item.productPrice,
         productName: item.productName,
+        productTrade: item.productTrade,
+        productModel: item.productModel,
+        productYear: item.productYear,
+        productSpecifications: item.productSpecifications,
+        productThumb: item.productThumb,
       })),
     });
 

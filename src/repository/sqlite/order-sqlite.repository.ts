@@ -59,7 +59,12 @@ export class OrderSqliteRepository implements OrderRepository {
         oi.id AS orderItemId,
         oi.product_id AS productId,
         oi.price AS price,
-        p.name AS productName
+        p.name AS productName,
+        p.trade AS productTrade,
+        p.model AS productModel,
+        p.year AS productYear,
+        p.specifications AS productSpecifications,
+        p.thumb AS productThumb
       FROM orders o
       JOIN order_items oi ON o.id = oi.order_id
       JOIN products p ON oi.product_id = p.id
@@ -87,6 +92,11 @@ export class OrderSqliteRepository implements OrderRepository {
         productId: row.productId,
         productName: row.productName,
         price: row.price,
+        productTrade: row.productTrade,
+        productModel: row.productModel,
+        productYear: row.productYear,
+        productSpecifications: JSON.parse(row.productSpecifications || "[]"),
+        productThumb: row.productThumb,
       });
     }
 

@@ -5,19 +5,24 @@ meta {
 }
 
 put {
-  url: {{BASE_URL}}/product/4
+  url: {{BASE_URL}}/product/50
   body: json
   auth: bearer
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkZsYW1hcmlvbiBGYWd1bmRlcyBQaW50byIsImVtYWlsIjoiZmxhbWFyaW9ucGludG9Ac291LmZhY2NhdC5iciIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRfYXQiOiIyMDI1LTA5LTExIDAwOjE4OjU0IiwiaWF0IjoxNzU3NTUyOTYzLCJleHAiOjE3NTc1NTY1NjN9.Qed-UQRi9eiq6gE7D0PhygrzlNgEEWr3tVL_RvJ76rg
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yOSAwMToxOTozOCIsImlhdCI6MTc1OTEwODkxNiwiZXhwIjoxNzU5MTEyNTE2fQ.8P5uGLcr1ymdGZ7ht4MNg3WOwTgXIyJj3jrTwIglqw4
 }
 
 body:json {
   {
     "name": "BMW X7",
-    "price": 20
+    "price": 20,
+    "trade": "BMW",
+    "model": "X7 xDrive40i",
+    "year": "2023-01-01",
+    "specifications": ["Automático", "Gasolina", "Ar-condicionado digital", "Airbags frontais e laterais"],
+    "thumb": "https://example.com/images/bmw_x7.jpg"
   }
 }
 

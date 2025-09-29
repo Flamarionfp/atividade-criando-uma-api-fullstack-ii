@@ -5,9 +5,13 @@ meta {
 }
 
 delete {
-  url: {{BASE_URL}}/product/1
+  url: {{BASE_URL}}/product/49
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yOSAwMToxOTozOCIsImlhdCI6MTc1OTEwODkxNiwiZXhwIjoxNzU5MTEyNTE2fQ.8P5uGLcr1ymdGZ7ht4MNg3WOwTgXIyJj3jrTwIglqw4
 }
 
 settings {
