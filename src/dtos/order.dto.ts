@@ -13,6 +13,12 @@ export interface OrderDTO {
   items: OrderItemDTO[];
 }
 
+export interface OrderSummaryDTO {
+  id: number;
+  totalAmount: number;
+  createdAt: string;
+}
+
 export type CreateOrderDTO = Omit<OrderDTO, "id" | "createdAt" | "items"> & {
   items: Omit<OrderItemDTO, "id">[];
 };

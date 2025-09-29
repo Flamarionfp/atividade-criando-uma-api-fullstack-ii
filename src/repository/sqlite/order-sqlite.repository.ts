@@ -10,16 +10,16 @@ export class OrderSqliteRepository implements OrderRepository {
   }
 
   findById = async (id: number) => {
-    const orders = await this.fetchOrders("WHERE o.id = ?", [id]);
+    const orders = await this.fetchOrdersWithItems("WHERE o.id = ?", [id]);
     return orders.length > 0 ? orders[0] : undefined;
   };
 
   list = async (userId: number) => {
-    return this.fetchOrders("WHERE o.user_id = ?", [userId]);
+    return this.fetchOrdersSummary("WHERE o.user_id = ?", [userId]);
   };
 
   listAll = async () => {
-    return this.fetchOrders();
+    return this.fetchOrdersSummary();
   };
 
   create = async (order: CreateOrderDTO): Promise<OrderDTO> => {
@@ -41,15 +41,12 @@ export class OrderSqliteRepository implements OrderRepository {
     }
 
     const createdOrder = await this.findById(orderId);
-
-    if (!createdOrder) {
-      throw new Error("Erro ao criar o pedido");
-    }
+    if (!createdOrder) throw new Error("Erro ao criar o pedido");
 
     return createdOrder;
   };
 
-  private async fetchOrders(
+  private async fetchOrdersWithItems(
     whereClause = "",
     params: any[] = []
   ): Promise<OrderDTO[]> {
@@ -63,25 +60,18 @@ export class OrderSqliteRepository implements OrderRepository {
         oi.product_id AS productId,
         oi.price AS price,
         p.name AS productName
-      FROM
-        orders o
-      JOIN
-        order_items oi ON o.id = oi.order_id
-      JOIN
-        products p ON oi.product_id = p.id
+      FROM orders o
+      JOIN order_items oi ON o.id = oi.order_id
+      JOIN products p ON oi.product_id = p.id
       ${whereClause}
-      ORDER BY
-        o.created_at DESC
+      ORDER BY o.created_at DESC
     `;
 
     const rows = await this.connection.all<any[]>(query, ...params);
 
-    if (rows.length === 0) {
-      return [];
-    }
+    if (rows.length === 0) return [];
 
     const ordersMap = new Map<number, OrderDTO>();
-
     for (const row of rows) {
       if (!ordersMap.has(row.orderId)) {
         ordersMap.set(row.orderId, {
@@ -92,7 +82,6 @@ export class OrderSqliteRepository implements OrderRepository {
           items: [],
         });
       }
-
       ordersMap.get(row.orderId)?.items.push({
         id: row.orderItemId,
         productId: row.productId,
@@ -102,6 +91,23 @@ export class OrderSqliteRepository implements OrderRepository {
     }
 
     return Array.from(ordersMap.values());
+  }
+
+  private async fetchOrdersSummary(
+    whereClause = "",
+    params: any[] = []
+  ): Promise<Pick<OrderDTO, "id" | "createdAt" | "totalAmount">[]> {
+    const query = `
+      SELECT 
+        o.id AS id,
+        o.total_amount AS totalAmount,
+        o.created_at AS createdAt
+      FROM orders o
+      ${whereClause}
+      ORDER BY o.created_at DESC
+    `;
+
+    return this.connection.all(query, ...params);
   }
 
   deleteByUserId = async (userId: number) => {
