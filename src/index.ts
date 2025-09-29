@@ -12,6 +12,7 @@ import { exceptionHandlerMiddleware } from "./middlewares/exception-handler-midd
 import { healthCheckController } from "./controllers/health-check";
 import cors from "cors";
 import morgan from "morgan";
+import orderRouter from "./routes/order.routes";
 
 z.config(z.locales.pt());
 
@@ -29,6 +30,7 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
+app.use("/order", orderRouter);
 
 app.use(exceptionHandlerMiddleware.handle);
 

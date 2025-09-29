@@ -18,17 +18,12 @@
  *           format: float
  *           description: Preço do produto.
  *           example: 49.99
- *         quantity:
- *           type: integer
- *           description: Quantidade em estoque.
- *           example: 100
  *
  *     CreateProductRequest:
  *       type: object
  *       required:
  *         - name
  *         - price
- *         - quantity
  *       properties:
  *         name:
  *           type: string
@@ -39,10 +34,6 @@
  *           format: float
  *           description: Preço do produto.
  *           example: 49.99
- *         quantity:
- *           type: integer
- *           description: Quantidade em estoque.
- *           example: 100
  *
  *     UpdateProductRequest:
  *       type: object
@@ -56,10 +47,6 @@
  *           format: float
  *           description: Novo preço do produto.
  *           example: 59.90
- *         quantity:
- *           type: integer
- *           description: Nova quantidade em estoque.
- *           example: 150
  *
  *     UserResponse:
  *       type: object

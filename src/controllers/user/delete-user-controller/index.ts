@@ -1,3 +1,4 @@
+import { OrderSqliteRepository } from "../../../repository/sqlite/order-sqlite.repository";
 import { UserSqliteRepository } from "../../../repository/sqlite/user-sqlite.repository";
 import { DeleteUserService } from "../../../services/user";
 import { DeleteUserController } from "./delete-user.controller";
@@ -5,9 +6,15 @@ import { DeleteUserController } from "./delete-user.controller";
 export const makeDeleteUserController =
   async (): Promise<DeleteUserController> => {
     const userRepository = new UserSqliteRepository();
-    await userRepository.init();
+    const orderRepository = new OrderSqliteRepository();
 
-    const deleteUserService = new DeleteUserService(userRepository);
+    await Promise.all([userRepository.init(), orderRepository.init()]);
+
+    const deleteUserService = new DeleteUserService(
+      userRepository,
+      orderRepository
+    );
+
     const deleteUserController = new DeleteUserController(deleteUserService);
 
     return deleteUserController;

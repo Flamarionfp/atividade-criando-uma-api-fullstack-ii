@@ -5,6 +5,7 @@ import { checkRoleMiddleware } from "../middlewares/check-role-middleware";
 import { makeListCartController } from "../controllers/cart/list-cart-controller";
 import { makeRemoveFromCartController } from "../controllers/cart/remove-from-cart-controller";
 import { makeClearCartController } from "../controllers/cart/clear-cart-controller";
+import { makeCheckoutCartController } from "../controllers/cart/checkout-cart-controller";
 
 const cartRouter = Router();
 
@@ -128,6 +129,33 @@ const configureCartRoutes = async () => {
     authMiddleware.handle,
     checkRoleMiddleware.customer,
     listCartController.handle
+  );
+
+  const checkoutCartController = await makeCheckoutCartController();
+
+  /**
+   * @swagger
+   * /cart/checkout:
+   *   post:
+   *     summary: Finaliza a compra, criando um pedido
+   *     tags: [Cart]
+   *     security:
+   *       - BearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Pedido criado com sucesso.
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Order'
+   *       400:
+   *         description: Carrinho vazio.
+   */
+  cartRouter.post(
+    "/checkout",
+    authMiddleware.handle,
+    checkRoleMiddleware.customer,
+    checkoutCartController.handle
   );
 };
 

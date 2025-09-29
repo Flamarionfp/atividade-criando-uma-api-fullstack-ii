@@ -1,9 +1,18 @@
+export interface OrderItemDTO {
+  id: number;
+  productId: number;
+  productName: string;
+  price: number;
+}
+
 export interface OrderDTO {
   id: number;
   userId: number;
-  productId: number;
-  quantity: number;
-  totalPrice: number;
-  createdDate: Date;
-  submittedDate: Date;
+  totalAmount: number;
+  createdAt: string;
+  items: OrderItemDTO[];
 }
+
+export type CreateOrderDTO = Omit<OrderDTO, "id" | "createdAt" | "items"> & {
+  items: Omit<OrderItemDTO, "id">[];
+};

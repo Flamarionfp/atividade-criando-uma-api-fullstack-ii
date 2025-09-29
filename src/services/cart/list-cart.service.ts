@@ -1,3 +1,4 @@
+import { calculateOrderTotal } from "../../helpers/misc/order";
 import { CartRepository } from "../../repository/cart.repository";
 
 export class ListCartService {
@@ -6,9 +7,7 @@ export class ListCartService {
   execute = async (userId: number) => {
     const cart = await this.cartRepository.findByUserId(userId);
 
-    const total = cart.reduce((acc, item) => {
-      return acc + item.productPrice;
-    }, 0);
+    const total = calculateOrderTotal(cart);
 
     return {
       items: cart,

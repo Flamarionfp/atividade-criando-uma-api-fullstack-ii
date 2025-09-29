@@ -3,6 +3,7 @@
 [V] -> Autenticação
 [V] -> Autorização
 [V] -> Carrinho
-[] -> Pedido
+[V] -> Pedido
 [] -> Paginação (Produtos)
 [V] -> Swagger
+[] -> Novos campos (produto)

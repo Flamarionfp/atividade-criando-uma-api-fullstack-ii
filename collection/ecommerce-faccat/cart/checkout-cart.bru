@@ -1,23 +1,17 @@
 meta {
-  name: add-to-cart
+  name: checkout-cart
   type: http
-  seq: 1
+  seq: 5
 }
 
 post {
-  url: {{BASE_URL}}/cart/add
-  body: json
+  url: {{BASE_URL}}/cart/checkout
+  body: none
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkNyaXN0aWFubyBSb25hbGRvIiwiZW1haWwiOiJjcmlzQHNvdS5mYWNjYXQuYnIiLCJyb2xlIjoiY3VzdG9tZXIiLCJjcmVhdGVkX2F0IjoiMjAyNS0wOS0yOSAwMDoyMjo0OSIsImlhdCI6MTc1OTEwNTM4NCwiZXhwIjoxNzU5MTA4OTg0fQ.M1RuBvA9vc5_qS8rSNtXAbQJA1aYE5CapaSGxjRuX8E
-}
-
-body:json {
-  {
-    "productId": 1
-  }
 }
 
 settings {
