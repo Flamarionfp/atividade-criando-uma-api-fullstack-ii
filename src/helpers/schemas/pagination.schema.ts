@@ -1,4 +1,5 @@
 import * as z from "zod";
+import { PAGINATION_DEFAULT_LIMIT } from "../../constants/pagination";
 
 export const paginationSchema = z.object({
   page: z
@@ -12,7 +13,7 @@ export const paginationSchema = z.object({
   limit: z
     .string()
     .optional()
-    .default("10")
+    .default(`${PAGINATION_DEFAULT_LIMIT}`)
     .transform((val) => parseInt(val, 10))
     .refine((val) => val > 0 && val <= 100, {
       message: "O parâmetro 'limit' deve estar entre 1 e 100",

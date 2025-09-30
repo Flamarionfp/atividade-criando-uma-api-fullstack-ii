@@ -1,5 +1,6 @@
 import { PaginatedResult, PaginationParams } from "../../@types/pagination";
 import { DatabaseConnection } from "../../config/database";
+import { PAGINATION_DEFAULT_LIMIT } from "../../constants/pagination";
 
 export async function paginate<T>(
   connection: DatabaseConnection,
@@ -10,7 +11,9 @@ export async function paginate<T>(
   const page = pagination.page && pagination.page > 0 ? pagination.page : 1;
 
   const limit =
-    pagination.limit && pagination.limit > 0 ? pagination.limit : 10;
+    pagination.limit && pagination.limit > 0
+      ? pagination.limit
+      : PAGINATION_DEFAULT_LIMIT;
   const offset = (page - 1) * limit;
 
   const paginatedQuery = `${baseQuery} LIMIT ? OFFSET ?`;
