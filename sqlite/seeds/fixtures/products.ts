@@ -6,7 +6,7 @@ export const products = [
     model: "Uno Mille",
     year: "2015-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/fiat_uno.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/uno.webp`,
   },
   {
     name: "Palio",
@@ -15,7 +15,7 @@ export const products = [
     model: "Palio Fire",
     year: "2016-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/fiat_palio.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/palio.jpg`,
   },
   {
     name: "Civic",
@@ -29,7 +29,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/honda_civic.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/civic.jpg`,
   },
   {
     name: "Corolla",
@@ -43,7 +43,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/toyota_corolla.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/corolla.webp`,
   },
   {
     name: "HB20",
@@ -52,7 +52,7 @@ export const products = [
     model: "HB20S",
     year: "2018-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/hyundai_hb20.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/hb20.webp`,
   },
   {
     name: "Ka",
@@ -61,7 +61,7 @@ export const products = [
     model: "Ka SE",
     year: "2017-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/ford_ka.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/ford-ka.jpg`,
   },
   {
     name: "Sandero",
@@ -70,7 +70,7 @@ export const products = [
     model: "Sandero Expression",
     year: "2019-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/renault_sandero.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/sandero.jpg`,
   },
   {
     name: "Jetta",
@@ -84,7 +84,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/volkswagen_jetta.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/jetta.webp`,
   },
   {
     name: "Fiesta",
@@ -93,7 +93,7 @@ export const products = [
     model: "Fiesta SE",
     year: "2018-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/ford_fiesta.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/fiesta.jpg`,
   },
   {
     name: "Focus",
@@ -107,7 +107,7 @@ export const products = [
       "Ar-condicionado",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/ford_focus.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/focus.webp`,
   },
   {
     name: "Golf",
@@ -121,7 +121,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/volkswagen_golf.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/golf.webp`,
   },
   {
     name: "Versa",
@@ -130,7 +130,7 @@ export const products = [
     model: "Versa SL",
     year: "2019-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/nissan_versa.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/versa.webp`,
   },
   {
     name: "Logan",
@@ -139,7 +139,7 @@ export const products = [
     model: "Logan Expression",
     year: "2018-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/renault_logan.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/logan.webp`,
   },
   {
     name: "Onix",
@@ -148,7 +148,7 @@ export const products = [
     model: "Onix LTZ",
     year: "2020-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/chevrolet_onix.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/onix.webp`,
   },
   {
     name: "Prisma",
@@ -157,7 +157,7 @@ export const products = [
     model: "Prisma LTZ",
     year: "2019-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/chevrolet_prisma.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/prisma.webp`,
   },
   {
     name: "Etios",
@@ -166,7 +166,7 @@ export const products = [
     model: "Etios X",
     year: "2018-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/toyota_etios.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/etios.jpg`,
   },
   {
     name: "Fox",
@@ -175,7 +175,7 @@ export const products = [
     model: "Fox Trendline",
     year: "2017-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/volkswagen_fox.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/fox.jpg`,
   },
   {
     name: "Virtus",
@@ -189,7 +189,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/volkswagen_virtus.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/virtus.webp`,
   },
   {
     name: "T-Cross",
@@ -203,7 +203,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/volkswagen_tcross.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/t-cross.jpg`,
   },
   {
     name: "Kwid",
@@ -212,7 +212,7 @@ export const products = [
     model: "Kwid Zen",
     year: "2019-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/renault_kwid.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/kwid.jpeg`,
   },
   {
     name: "Duster",
@@ -221,7 +221,7 @@ export const products = [
     model: "Duster Dynamique",
     year: "2020-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/renault_duster.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/duster.jpg`,
   },
   {
     name: "Tracker",
@@ -235,7 +235,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/chevrolet_tracker.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/tracker.webp`,
   },
   {
     name: "Creta",
@@ -249,7 +249,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/hyundai_creta.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/creta.jpg`,
   },
   {
     name: "Compass",
@@ -263,7 +263,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/jeep_compass.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/compass.webp`,
   },
   {
     name: "Renegade",
@@ -277,7 +277,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/jeep_renegade.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/renegade.webp`,
   },
   {
     name: "Toro",
@@ -291,7 +291,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/fiat_toro.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/toro.webp`,
   },
   {
     name: "Ranger",
@@ -305,7 +305,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/ford_ranger.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/ranger.webp`,
   },
   {
     name: "S10",
@@ -319,7 +319,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/chevrolet_s10.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/s10.webp`,
   },
   {
     name: "Hilux",
@@ -333,7 +333,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/toyota_hilux.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/hilux.webp`,
   },
   {
     name: "Amarok",
@@ -347,7 +347,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/volkswagen_amarok.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/amarok.jpg`,
   },
   {
     name: "Voyage",
@@ -356,7 +356,7 @@ export const products = [
     model: "Voyage Trendline",
     year: "2018-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/volkswagen_voyage.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/voyage.webp`,
   },
   {
     name: "Celta",
@@ -365,7 +365,7 @@ export const products = [
     model: "Celta LT",
     year: "2016-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção hidráulica"],
-    thumb: "https://example.com/images/chevrolet_celta.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/celta.webp`,
   },
   {
     name: "Prado",
@@ -379,7 +379,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/toyota_prado.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/prado.jpeg`,
   },
   {
     name: "Wrangler",
@@ -393,7 +393,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/jeep_wrangler.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/wrangler.avif`,
   },
   {
     name: "Land Rover",
@@ -407,7 +407,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/landrover_discovery.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/land-rover.webp`,
   },
   {
     name: "Range Rover",
@@ -421,7 +421,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/landrover_range_rover.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/range-rover.webp`,
   },
   {
     name: "EcoSport",
@@ -435,7 +435,7 @@ export const products = [
       "Ar-condicionado",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/ford_ecosport.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/ecosport.jpg`,
   },
   {
     name: "HR-V",
@@ -449,7 +449,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/honda_hrv.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/hrv.webp`,
   },
   {
     name: "CR-V",
@@ -463,7 +463,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/honda_crv.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/crv.webp`,
   },
   {
     name: "Cherokee",
@@ -477,7 +477,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/jeep_cherokee.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/cherokee.jpg`,
   },
   {
     name: "Mobi",
@@ -486,7 +486,7 @@ export const products = [
     model: "Mobi Like",
     year: "2019-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/fiat_mobi.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/`,
   },
   {
     name: "Argo",
@@ -495,7 +495,7 @@ export const products = [
     model: "Argo Drive",
     year: "2020-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/fiat_argo.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/mobi.webp`,
   },
   {
     name: "Pulse",
@@ -504,7 +504,7 @@ export const products = [
     model: "Pulse Drive",
     year: "2022-01-01",
     specifications: ["Manual", "Flex", "Ar-condicionado", "Direção elétrica"],
-    thumb: "https://example.com/images/fiat_pulse.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/pulse.webp`,
   },
   {
     name: "Nivus",
@@ -518,7 +518,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/volkswagen_nivus.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/nivus.jpg`,
   },
   {
     name: "Taos",
@@ -532,7 +532,7 @@ export const products = [
       "Ar-condicionado digital",
       "Airbags frontais e laterais",
     ],
-    thumb: "https://example.com/images/volkswagen_taos.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/taos.jpg`,
   },
   {
     name: "Tiggo",
@@ -546,7 +546,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/chery_tiggo.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/tiggo.jpg`,
   },
   {
     name: "Captur",
@@ -560,7 +560,7 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/renault_captur.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/captur.jpg`,
   },
   {
     name: "Kicks",
@@ -574,6 +574,6 @@ export const products = [
       "Ar-condicionado digital",
       "Direção elétrica",
     ],
-    thumb: "https://example.com/images/nissan_kicks.jpg",
+    thumb: `${process.env.BUCKET_PUBLIC_URL}/kicks.jpg`,
   },
 ];

@@ -1,4 +1,5 @@
 import * as z from "zod";
+import "dotenv/config";
 
 const productSchema = z.object({
   name: z.string().trim(),
@@ -6,7 +7,10 @@ const productSchema = z.object({
   trade: z.string().trim(),
   model: z.string().trim(),
   specifications: z.array(z.string()),
-  thumb: z.url(),
+  thumb: z
+    .url()
+    .optional()
+    .default(`${process.env.BUCKET_PUBLIC_URL}/default.webp`),
   year: z
     .union([
       z.string().regex(/^(\d{4}-\d{2}-\d{2})$/, { message: "Data inválida" }),
