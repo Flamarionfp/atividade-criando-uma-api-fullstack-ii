@@ -75,11 +75,9 @@
  *         createdAt:
  *           type: string
  *           format: date-time
- *           description: A data de criação do registro.
  *         updatedAt:
  *           type: string
  *           format: date-time
- *           description: A data da última atualização do registro.
  *
  *     UserResponse:
  *       allOf:
@@ -96,7 +94,7 @@
  *           type: integer
  *           description: O ID do usuário que fez o pedido.
  *           example: 1
- *         total:
+ *         totalAmount:
  *           type: number
  *           format: float
  *           description: O valor total do pedido.
@@ -105,18 +103,16 @@
  *           type: string
  *           description: O status atual do pedido.
  *           example: "pending"
- *         orderItems:
+ *         items:
  *           type: array
  *           items:
  *             $ref: '#/components/schemas/OrderItem'
  *         createdAt:
  *           type: string
  *           format: date-time
- *           description: A data de criação do registro.
  *         updatedAt:
  *           type: string
  *           format: date-time
- *           description: A data da última atualização do registro.
  *
  *     OrderItem:
  *       type: object
@@ -134,23 +130,33 @@
  *           type: number
  *           format: float
  *           description: O preço do produto no momento da compra.
+ *         productTrade:
+ *           type: string
+ *         productModel:
+ *           type: string
+ *         productYear:
+ *           type: string
+ *         productSpecifications:
+ *           type: array
+ *           items:
+ *             type: string
+ *         productThumb:
+ *           type: string
+ *           format: url
  *
  *     CartItem:
  *       type: object
  *       properties:
  *         id:
  *           type: integer
- *           description: O ID do item no carrinho.
  *         product:
  *           $ref: '#/components/schemas/Product'
  *         createdAt:
  *           type: string
  *           format: date-time
- *           description: A data de criação do registro.
  *         updatedAt:
  *           type: string
  *           format: date-time
- *           description: A data da última atualização do registro.
  *
  *     AuthRequest:
  *       type: object
@@ -204,6 +210,39 @@
  *           type: string
  *           enum: [admin, customer]
  *
+ *     Pagination:
+ *       type: object
+ *       properties:
+ *         page:
+ *           type: integer
+ *           example: 1
+ *         limit:
+ *           type: integer
+ *           example: 10
+ *         total:
+ *           type: integer
+ *           example: 42
+ *
+ *     PaginatedOrders:
+ *       type: object
+ *       properties:
+ *         data:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Order'
+ *         pagination:
+ *           $ref: '#/components/schemas/Pagination'
+ *
+ *     PaginatedProducts:
+ *       type: object
+ *       properties:
+ *         data:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Product'
+ *         pagination:
+ *           $ref: '#/components/schemas/Pagination'
+ *
  *   securitySchemes:
  *     BearerAuth:
  *       type: http
@@ -214,4 +253,3 @@
  *       in: header
  *       name: x-api-key
  */
-void 0;

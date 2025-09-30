@@ -62,19 +62,30 @@ const configureProductRoutes = async () => {
    * @swagger
    * /product:
    *   get:
-   *     summary: Lista todos os produtos
+   *     summary: Lista todos os produtos (com paginação)
    *     tags: [Products]
    *     security:
    *       - BearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *           example: 1
+   *         description: Número da página
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *           example: 10
+   *         description: Quantidade de itens por página
    *     responses:
    *       200:
-   *         description: Lista de produtos.
+   *         description: Lista paginada de produtos
    *         content:
    *           application/json:
    *             schema:
-   *               type: array
-   *               items:
-   *                 $ref: '#/components/schemas/Product'
+   *               $ref: '#/components/schemas/PaginatedProducts'
    */
   productRouter.get("/", listProductsController.handle);
 

@@ -1,3 +1,5 @@
+import { PaginationParams } from "../@types/pagination";
+
 export interface ProductDTO {
   id: number;
   name: string;
@@ -9,7 +11,9 @@ export interface ProductDTO {
   thumb: string;
 }
 
-export type FilterProductsDTO = Partial<Pick<ProductDTO, "name" | "price">>;
+type FilterProductsDTO = Partial<Pick<ProductDTO, "name" | "price">>;
+
+export type ProductQueryDTO = FilterProductsDTO & PaginationParams;
 
 export type CreateProductDTO = Omit<ProductDTO, "id">;
 

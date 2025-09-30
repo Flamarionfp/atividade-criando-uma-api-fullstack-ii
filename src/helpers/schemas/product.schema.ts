@@ -1,5 +1,6 @@
 import * as z from "zod";
 import "dotenv/config";
+import { paginationSchema } from "./pagination.schema";
 
 const productSchema = z.object({
   name: z.string().trim(),
@@ -29,6 +30,8 @@ export const createProductBodySchema = z.object({
   ...productSchema.shape,
 });
 
-export const filterProductsQuerySchema = productSchema.partial();
+export const productsQuerySchema = productSchema.partial().extend({
+  ...paginationSchema.shape,
+});
 
 export const updateProductBodySchema = productSchema.partial();

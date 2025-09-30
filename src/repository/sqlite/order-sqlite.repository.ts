@@ -1,5 +1,11 @@
+import { PaginatedResult, PaginationParams } from "../../@types/pagination";
 import { connectDatabase, DatabaseConnection } from "../../config/database";
-import { CreateOrderDTO, OrderDTO } from "../../dtos/order.dto";
+import {
+  CreateOrderDTO,
+  OrderDTO,
+  OrderSummaryDTO,
+} from "../../dtos/order.dto";
+import { paginate } from "../../helpers/misc/paginate";
 import { OrderRepository } from "../order.repository";
 
 export class OrderSqliteRepository implements OrderRepository {
@@ -14,12 +20,17 @@ export class OrderSqliteRepository implements OrderRepository {
     return orders.length > 0 ? orders[0] : undefined;
   };
 
-  list = async (userId: number) => {
-    return this.fetchOrdersSummary("WHERE o.user_id = ?", [userId]);
+  list = async (
+    userId: number,
+    pagination?: PaginationParams
+  ): Promise<PaginatedResult<OrderSummaryDTO>> => {
+    return this.fetchOrdersSummary("WHERE o.user_id = ?", [userId], pagination);
   };
 
-  listAll = async () => {
-    return this.fetchOrdersSummary();
+  listAll = async (
+    pagination?: PaginationParams
+  ): Promise<PaginatedResult<OrderSummaryDTO>> => {
+    return this.fetchOrdersSummary("", [], pagination);
   };
 
   create = async (order: CreateOrderDTO): Promise<OrderDTO> => {
@@ -105,9 +116,10 @@ export class OrderSqliteRepository implements OrderRepository {
 
   private async fetchOrdersSummary(
     whereClause = "",
-    params: any[] = []
-  ): Promise<Pick<OrderDTO, "id" | "createdAt" | "totalAmount">[]> {
-    const query = `
+    params: any[] = [],
+    pagination?: PaginationParams
+  ): Promise<PaginatedResult<OrderSummaryDTO>> {
+    const baseQuery = `
       SELECT 
         o.id AS id,
         o.total_amount AS totalAmount,
@@ -117,7 +129,12 @@ export class OrderSqliteRepository implements OrderRepository {
       ORDER BY o.created_at DESC
     `;
 
-    return this.connection.all(query, ...params);
+    return paginate<OrderSummaryDTO>(
+      this.connection,
+      baseQuery,
+      params,
+      pagination
+    );
   }
 
   deleteByUserId = async (userId: number) => {

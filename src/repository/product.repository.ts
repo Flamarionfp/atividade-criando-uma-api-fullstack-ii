@@ -1,3 +1,4 @@
+import { PaginatedResult, PaginationParams } from "../@types/pagination";
 import {
   CreateProductDTO,
   FilterProductsDTO,
@@ -9,7 +10,10 @@ export interface ProductRepository {
   init(): Promise<void>;
   findByName: (name: string) => Promise<ProductDTO | undefined>;
   findById: (id: number) => Promise<ProductDTO | undefined>;
-  findAll: (filters?: FilterProductsDTO) => Promise<ProductDTO[]>;
+  findAll: (
+    filters?: FilterProductsDTO,
+    pagination?: PaginationParams
+  ) => Promise<PaginatedResult<ProductDTO>>;
   create: (product: CreateProductDTO) => Promise<ProductDTO>;
   update: (id: number, product: UpdateProductDTO) => Promise<ProductDTO>;
   delete: (id: number) => Promise<void>;

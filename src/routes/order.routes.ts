@@ -45,21 +45,32 @@ const configureOrderRoutes = async () => {
    * @swagger
    * /order:
    *   get:
-   *     summary: Lista todos os pedidos do usuário autenticado ou todos os pedidos se for admin
+   *     summary: Lista todos os pedidos do usuário autenticado (ou todos os pedidos se for admin)
    *     tags: [Orders]
    *     security:
    *       - BearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *           example: 1
+   *         description: Número da página
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *           example: 10
+   *         description: Quantidade de itens por página
    *     responses:
    *       200:
-   *         description: Lista de pedidos.
+   *         description: Lista paginada de pedidos
    *         content:
    *           application/json:
    *             schema:
-   *               type: array
-   *               items:
-   *                 $ref: '#/components/schemas/Order'
+   *               $ref: '#/components/schemas/PaginatedOrders'
    *       403:
-   *         description: Acesso negado.
+   *         description: Acesso negado
    */
   orderRouter.get("/", authMiddleware.handle, listOrdersController.handle);
 };

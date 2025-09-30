@@ -1,10 +1,12 @@
+import { PaginationParams } from "../../@types/pagination";
 import { connectDatabase, DatabaseConnection } from "../../config/database";
 import {
   CreateProductDTO,
-  FilterProductsDTO,
+  ProductQueryDTO,
   ProductDTO,
   UpdateProductDTO,
 } from "../../dtos/product.dto";
+import { paginate } from "../../helpers/misc/paginate";
 import { ProductRepository } from "../product.repository";
 
 export class ProductSqliteRepository implements ProductRepository {
@@ -46,7 +48,10 @@ export class ProductSqliteRepository implements ProductRepository {
     return row;
   };
 
-  findAll = async (filters?: FilterProductsDTO) => {
+  findAll = async (
+    filters?: ProductQueryDTO,
+    pagination?: PaginationParams
+  ) => {
     const whereClauses: string[] = [];
     const params: any[] = [];
 
@@ -63,15 +68,22 @@ export class ProductSqliteRepository implements ProductRepository {
     const whereClause =
       whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
-    const rows = await this.connection.all<any[]>(
-      `SELECT * FROM products ${whereClause}`,
-      params
+    const baseQuery = `SELECT * FROM products ${whereClause}`;
+
+    const result = await paginate<any>(
+      this.connection,
+      baseQuery,
+      params,
+      pagination
     );
 
-    return rows.map((row) => ({
-      ...row,
-      specifications: JSON.parse(row.specifications || "[]"),
-    })) as ProductDTO[];
+    return {
+      ...result,
+      data: result.data.map((row) => ({
+        ...row,
+        specifications: JSON.parse(row.specifications || "[]"),
+      })) as ProductDTO[],
+    };
   };
 
   update = async (id: number, product: UpdateProductDTO) => {
