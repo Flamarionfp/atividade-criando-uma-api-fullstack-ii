@@ -19,7 +19,7 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
 
     return {
       async all(sql, ...params) {
-        const flatParams = params.flat(); // garante que não vai virar array dentro de array
+        const flatParams = params.flat();
         const result = await client.execute({ sql, args: flatParams });
         return result.rows as any;
       },
